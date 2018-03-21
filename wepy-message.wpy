@@ -1,0 +1,84 @@
+
+<template>
+  <view class="wepy-message {{params.position}} " animation="{{animationData}}"  wx:if="{{params.visable}}">
+    <view class="wepy-message-container {{params.type}}">
+      <span class="wepy-message-icon iconfont icon-{{params.type}}"></span>
+      {{tips}}
+    </view>
+  </view>
+</template>
+<script>
+    import wepy from 'wepy'
+    let commonTimer=4500;
+    let translateTimer=1500;
+    export default class MyPage extends wepy.component {
+        props = {
+
+        }
+
+        data = {
+            animationData:{},
+            params:{
+                visable:false,
+                position:"bottom",
+                type:"info"
+            },
+            tips:""
+        }
+
+
+
+        watch = {
+
+        }
+
+        methods = {
+            success:function (tips,timer) {
+                this.params.type="success";
+                return this.commonFun(tips,timer);
+            },
+            error:function (tips,timer) {
+                this.params.type="error";
+                return this.commonFun(tips,timer);
+            },
+            info:function (tips,timer) {
+                this.params.type="info";
+                return this.commonFun(tips,timer);
+            },
+            warning:function (tips,timer,position) {
+                this.params.type="warning";
+                return this.commonFun(tips,timer);
+            },
+        }
+        commonFun(tips,timer){
+            return new Promise((resolve,reject)=>{
+                let _timer=timer && typeof (timer)=="number"?timer:commonTimer;
+                this.tips=tips;
+                this.params.visable=true;
+                this.$apply();
+                var animation = wx.createAnimation({
+                    duration: translateTimer,
+                    timingFunction: 'ease-in',
+                })
+                animation.bottom(0).step()
+                this.animationData=animation.export()
+                this.$apply();
+                let self=this;
+                setTimeout( () =>{
+                    animation.bottom("-100%").step();
+                    this.animationData=animation.export()
+                    self.$apply()
+                    setTimeout(function () {
+                        self.params.visable=false;
+                        self.$apply();
+                        resolve();
+                    },translateTimer)
+                },_timer)
+            })
+        }
+    }
+
+
+
+</script>
+<style lang="less" src="./wepy-message.scss"></style>
