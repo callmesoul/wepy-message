@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:callmesoul/wepy-cropper"
+    "url": "https://github.com/callmesoul/wepy-message"
   },
   "author": "callmesoul",
   "license": "MIT",
