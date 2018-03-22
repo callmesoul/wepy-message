@@ -24,7 +24,7 @@
 
 
 .wepy-message{
-  position: absolute;
+  position: fixed;
   width: 100%;
   text-align: center;
   z-index: 888;
@@ -32,7 +32,7 @@
   transition: all 1s ease-in;
 
   &.bottom{
-    margin-bottom: 60rpx;
+    margin-bottom: 150rpx;
   }
 
   .wepy-message-container{
