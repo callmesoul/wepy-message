@@ -59,6 +59,7 @@ npm install wepy-message --save
 
 ### 更新日志
 20180321            init
+20180322            修改默认时间
 
 
 [本人博客：callmesoul.cn](http://callmesoul.cn)

@@ -1,6 +1,6 @@
 {
   "name": "wepy-message",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "小程序wepy框架 消息提示插件",
   "main": "wepy-message.wpy",
   "scripts": {

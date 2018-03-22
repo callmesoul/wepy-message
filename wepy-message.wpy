@@ -9,8 +9,8 @@
 </template>
 <script>
     import wepy from 'wepy'
-    let commonTimer=4500;
-    let translateTimer=1500;
+    let commonTimer=3000;
+    let translateTimer=500;
     export default class MyPage extends wepy.component {
         props = {
 
